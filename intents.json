@@ -1,0 +1,301 @@
+{
+  "title": "TravelBuddy",
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hello", "hi", "hey", "good morning", "good evening", "yo", "howdy", "hiya", "morning", "evening"],
+      "responses": [
+        "Hi there! I'm TravelBuddy — your travel assistant.",
+        "Hello traveler! Where would you like to go next?",
+        "Hey! Ready to plan your next trip?"
+      ]
+    },
+    {
+      "tag": "acknowledgment",
+      "patterns": ["how are you", "how you doing", "are you ok", "how is your day", "how's it going", "what's up", "feeling good?"],
+      "responses": [
+        "I'm doing great, thank you! How about you?",
+        "It has been great, thank you! How about you?",
+        "The day has been good, thanks for asking!"
+      ]
+    },
+    {
+      "tag": "feeling",
+      "patterns": [
+        "i am (?P<feeling>doing great|amazing|well|good|fantastic|fabulous|terrific)",
+        "i am feeling (?P<feeling>great|amazing|good|fantastic|fabulous|terrific)",
+        "the day has been (?P<feeling>good)",
+        "i feel (?P<feeling>happy|excited|tired|stressed|amazing)"
+      ],
+      "responses": [
+        "That's great to hear! Are you planning to go on a trip soon?",
+        "I'm glad! Do you want travel suggestions?",
+        "Nice to hear that! Are you thinking of visiting a new country?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "quit", "exit", "later", "end chat", "catch you later", "farewell"],
+      "responses": [
+        "Goodbye and safe travels!",
+        "See you next time — may your adventures be amazing!",
+        "Farewell! Don’t forget your passport!"
+      ]
+    },
+    {
+      "tag": "name_query",
+      "patterns": ["what is your name", "who are you", "tell me your name", "your name"],
+      "responses": ["I'm TravelBuddy, your personal trip planner."]
+    },
+    {
+      "tag": "remember_name",
+      "patterns": ["my name is (?P<name>.+)", "i am (?P<name>.+)", "call me (?P<name>.+)", "i'm (?P<name>.+)"],
+      "responses": [
+        "Nice to meet you, {name}! Ready to explore the world together?",
+        "Great to meet you, {name}! Where would you like to travel?",
+        "Hello {name}! I'm here to help with your travel plans."
+      ]
+    },
+    {
+      "tag": "recall_name",
+      "patterns": ["what's my name", "what is my name", "do you remember my name", "tell me my name"],
+      "responses": ["You told me your name is {name}!"]
+    },
+    {
+      "tag": "holiday_interest",
+      "patterns": [
+        "i want to go for a (?P<holiday>vacation|trip|holiday|break)",
+        "i need a (?P<holiday>vacation|trip|holiday|break)",
+        "i want to plan a (?P<holiday>vacation|holiday)"
+      ],
+      "responses": ["Which continent are you thinking of going to?"]
+    },
+    {
+      "tag": "continent_interest",
+      "patterns": [
+        "i want to go to (?P<continent>Africa|Asia|Europe|North America|South America|Oceania)",
+        "i'm planning to visit (?P<continent>Africa|Asia|Europe|North America|South America|Oceania)",
+        "can you tell me about (?P<continent>Africa|Asia|Europe|North America|South America|Oceania)"
+      ],
+      "responses": ["Which country in {continent} interests you?"]
+    },
+    {
+      "tag": "country_interest",
+      "patterns": [
+        "i want to go to (?P<country>[A-Za-z ]+)",
+        "i'm planning to visit (?P<country>[A-Za-z ]+)",
+        "can you tell me about (?P<country>[A-Za-z ]+)"
+      ],
+      "responses": [
+        "{country} sounds amazing! I can suggest attractions, food, and travel tips there.",
+        "Ah, {country}! Great choice — when are you planning to go?"
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "what's the weather in (?P<location>.+)",
+        "how's the weather in (?P<location>.+)",
+        "is it raining in (?P<location>.+)"
+      ],
+      "responses": [
+        "I can’t fetch live weather, but I hope it’s sunny in {location}!",
+        "If you’re packing for {location}, always bring layers — weather changes fast!"
+      ]
+    },
+    {
+      "tag": "ask_budget",
+      "patterns": [
+        "how much does it cost to go to (?P<country>[A-Z][a-z]+)",
+        "what's the budget for (?P<country>[A-Z][a-z]+)",
+        "is (?P<country>[A-Z][a-z]+) expensive"
+      ],
+      "responses": [
+        "Costs for {country} vary, but you can save money by eating local food, using public transport, and staying in hostels or guesthouses.",
+        "Traveling to {country} doesn’t have to be expensive! Use local buses, avoid tourist restaurants, and book flights early.",
+        "For {country}, budget travellers usually save money by using public transport, eating street food, and choosing budget hotels or Airbnbs."
+      ]
+    },
+
+    {
+      "tag": "ask_flights",
+      "patterns": [
+        "what flights go to (?P<country>[A-Z][a-z]+)",
+        "how can I fly to (?P<country>[A-Z][a-z]+)",
+        "which airlines go to (?P<country>[A-Z][a-z]+)"
+      ],
+      "responses": [
+        "You can find good flights to {country} using Skyscanner, Google Flights, or Expedia — they compare prices from many airlines.",
+        "For flights to {country}, try checking Skyscanner or Google Flights. They usually show the best budget and fastest options.",
+        "Looking for flights to {country}? Head to Skyscanner — it’s great for comparing cheap, direct, and fast routes."
+      ]
+    },
+
+    {
+      "tag": "fallback",
+      "patterns": [".*"],
+      "responses": [
+        "I'm not sure about that, but I can help with flights, destinations, or travel tips!",
+        "Could you rephrase that? I can suggest hotels, food, or places to visit.",
+        "Hmm, I didn't get that. Maybe try asking about your next destination?"
+      ]
+
+    }
+  ],
+  "travel_data": {
+    "France": {
+      "continent": "Europe",
+      "cities": ["Paris", "Lyon", "Nice"],
+      "things_to_do": ["Eiffel Tower", "Louvre Museum", "Seine River cruise"],
+      "visa_info": {"UK": "No visa required."},
+      "difficulty": "Easy — UK citizens can enter visa-free.",
+      "budget": {"low": "€60–80/day", "medium": "€100–150/day", "high": "€200+/day"},
+      "flights": ["Air France", "British Airways", "Lufthansa"]
+    },
+    "Germany": {
+      "continent": "Europe",
+      "cities": ["Berlin", "Munich", "Hamburg"],
+      "things_to_do": ["Brandenburg Gate", "Oktoberfest", "Neuschwanstein Castle"],
+      "visa_info": {"UK": "No visa required."},
+      "difficulty": "Easy — UK citizens can enter visa-free.",
+      "budget": {"low": "€70–90/day", "medium": "€120–160/day", "high": "€200+/day"},
+      "flights": ["Lufthansa", "Eurowings", "KLM"]
+    },
+    "Italy": {
+      "continent": "Europe",
+      "cities": ["Rome", "Venice", "Florence"],
+      "things_to_do": ["Colosseum", "Venice gondolas", "Renaissance art in Florence"],
+      "visa_info": {"UK": "No visa required."},
+      "difficulty": "Easy — UK citizens can enter visa-free.",
+      "budget": {"low": "€50–70/day", "medium": "€100–140/day", "high": "€180+/day"},
+      "flights": ["Alitalia", "Ryanair", "EasyJet"]
+    },
+    "Japan": {
+      "continent": "Asia",
+      "cities": ["Tokyo", "Kyoto", "Osaka"],
+      "things_to_do": ["Mt. Fuji", "Cherry blossoms", "Tsukiji Market sushi"],
+      "visa_info": {"UK": "Visa-free for 90 days"},
+      "difficulty": "Easy — visa-free, long-haul flight moderate.",
+      "budget": {"low": "¥8000–12000/day", "medium": "¥15000–25000/day", "high": "¥30000+/day"},
+      "flights": ["Japan Airlines", "ANA", "Singapore Airlines"]
+    },
+    "China": {
+      "continent": "Asia",
+      "cities": ["Beijing", "Shanghai", "Xi'an"],
+      "things_to_do": ["Great Wall", "Forbidden City", "Terracotta Warriors"],
+      "visa_info": {"UK": "Visa required"},
+      "difficulty": "Hard — visa required.",
+      "budget": {"low": "¥300–500/day", "medium": "¥600–900/day", "high": "¥1200+/day"},
+      "flights": ["Air China", "China Eastern", "China Southern"]
+    },
+    "Thailand": {
+      "continent": "Asia",
+      "cities": ["Bangkok", "Chiang Mai", "Phuket"],
+      "things_to_do": ["Temples", "Street food", "Beaches"],
+      "visa_info": {"UK": "Visa-free for 30 days"},
+      "difficulty": "Easy — visa-free for UK citizens.",
+      "budget": {"low": "฿800–1200/day", "medium": "฿1500–2500/day", "high": "฿4000+/day"},
+      "flights": ["Thai Airways", "AirAsia", "Bangkok Airways"]
+    },
+    "Brazil": {
+      "continent": "South America",
+      "cities": ["Rio de Janeiro", "São Paulo", "Salvador"],
+      "things_to_do": ["Copacabana Beach", "Christ the Redeemer", "Carnival"],
+      "visa_info": {"UK": "Visa-free 90 days"},
+      "difficulty": "Moderate — long flight",
+      "budget": {"low": "£40–60/day", "medium": "£80–120/day", "high": "£150+/day"},
+      "flights": ["LATAM", "American Airlines", "Emirates"]
+    },
+    "Argentina": {
+      "continent": "South America",
+      "cities": ["Buenos Aires", "Mendoza", "Patagonia"],
+      "things_to_do": ["Iguazu Falls", "Tango shows", "Patagonia trekking"],
+      "visa_info": {"UK": "Visa-free 90 days"},
+      "difficulty": "Moderate — long distance",
+      "budget": {"low": "£40–60/day", "medium": "£80–120/day", "high": "$150+/day"},
+      "flights": ["Aerolineas Argentinas", "LATAM", "Iberia"]
+    },
+    "Canada": {
+      "continent": "North America",
+      "cities": ["Toronto", "Vancouver", "Montreal"],
+      "things_to_do": ["Niagara Falls", "Banff National Park", "CN Tower"],
+      "visa_info": {"UK": "eTA required"},
+      "difficulty": "Moderate — simple eTA",
+      "budget": {"low": "CA$70–100/day", "medium": "CA$120–180/day", "high": "CA$250+/day"},
+      "flights": ["Air Canada", "WestJet", "Delta"]
+    },
+    "United States": {
+      "continent": "North America",
+      "cities": ["New York", "Los Angeles", "Chicago"],
+      "things_to_do": ["Statue of Liberty", "Hollywood", "Grand Canyon"],
+      "visa_info": {"UK": "ESTA required"},
+      "difficulty": "Moderate — ESTA needed",
+      "budget": {"low": "$70–100/day", "medium": "$150–250/day", "high": "$300+/day"},
+      "flights": ["Delta", "United Airlines", "American Airlines"]
+    },
+    "Mexico": {
+      "continent": "North America",
+      "cities": ["Mexico City", "Cancún", "Guadalajara"],
+      "things_to_do": ["Chichen Itza", "Cancún beaches", "Frida Kahlo Museum"],
+      "visa_info": {"UK": "Visa-free 180 days"},
+      "difficulty": "Easy — visa-free",
+      "budget": {"low": "£30–50/day", "medium": "£60–100/day", "high": "£150+/day"},
+      "flights": ["Aeromexico", "Volaris", "Interjet"]
+    },
+    "Egypt": {
+      "continent": "Africa",
+      "cities": ["Cairo", "Alexandria", "Durban"],
+      "things_to_do": ["Pyramids", "River Nile", "Temples"],
+      "visa_info": {"UK": "Visa required"},
+      "difficulty": "Moderate — visa needed",
+      "budget": {"low": "£40–60/day", "medium": "£80–120/day", "high": "£150+/day"},
+      "flights": ["Turkish Airlines", "British Airways", "Emirates"]
+    },
+    "Kenya": {
+      "continent": "Africa",
+      "cities": ["Nairobi", "Mombasa", "Kisumu"],
+      "things_to_do": ["Maasai Mara safari", "Diani Beach", "Nairobi National Park"],
+      "visa_info": {"UK": "eVisa required"},
+      "difficulty": "Moderate — eVisa needed",
+      "budget": {"low": "£30–50/day", "medium": "£60–100/day", "high": "£120+/day"},
+      "flights": ["Kenya Airways", "Emirates", "Qatar Airways"]
+    },
+    "Morocco": {
+      "continent": "Africa",
+      "cities": ["Marrakech", "Casablanca", "Fes"],
+      "things_to_do": ["Souks", "Hassan II Mosque", "Sahara camel ride"],
+      "visa_info": {"UK": "Visa-free 90 days"},
+      "difficulty": "Easy — short flight",
+      "budget": {"low": "£25–40/day", "medium": "£60–90/day", "high": "£120+/day"},
+      "flights": ["Royal Air Maroc", "Air France", "Turkish Airlines"]
+    },
+    "Australia": {
+      "continent": "Oceania",
+      "cities": ["Sydney", "Melbourne", "Brisbane"],
+      "things_to_do": ["Sydney Opera House", "Great Barrier Reef", "Outback tours"],
+      "visa_info": {"UK": "eVisitor required"},
+      "difficulty": "Moderate — long flight",
+      "budget": {"low": "AU$70–100/day", "medium": "AU$120–180/day", "high": "AU$250+/day"},
+      "flights": ["Qantas", "Virgin Australia", "Singapore Airlines"]
+    },
+    "New Zealand": {
+      "continent": "Oceania",
+      "cities": ["Auckland", "Wellington", "Queenstown"],
+      "things_to_do": ["Hobbiton", "Milford Sound", "Adventure sports"],
+      "visa_info": {"UK": "NZeTA required"},
+      "difficulty": "Moderate — long flight",
+      "budget": {"low": "NZ$70–100/day", "medium": "NZ$120–180/day", "high": "NZ$250+/day"},
+      "flights": ["Air New Zealand", "Qantas", "Singapore Airlines"]
+    },
+    "Fiji": {
+      "continent": "Oceania",
+      "cities": ["Suva", "Nadi", "Denarau"],
+      "things_to_do": ["Beaches", "Snorkeling", "Fijian culture"],
+      "visa_info": {"UK": "Visa-free 120 days"},
+      "difficulty": "Moderate — remote location",
+      "budget": {"low": "FJ$80–120/day", "medium": "FJ$150–200/day", "high": "FJ$250+/day"},
+      "flights": ["Fiji Airways", "Qantas", "Virgin Australia"]
+    }
+  }
+
+}
